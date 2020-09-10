@@ -1,0 +1,59 @@
+﻿@page "/IndexAnimal"
+@inject CodeChallenge.Data.ZoologicoServicio _zoologicoServicio
+@inject CodeChallenge.Data.CalculosServicio _calculosServicios
+
+<h3>Lista de Animales</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Tipo de animal
+            </th>
+            <th>
+                Especie
+            </th>
+            <th>
+                Edad
+            </th>
+            <th>
+                Lugar de Origren
+            </th>
+            <th>
+                Peso
+            </th>
+            <th>
+                Alimento Mensual
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var animal in _zoologicoServicio.GetAnimales())
+        {
+            <tr>
+                <td>
+                    @animal.Tipo
+                </td>                   
+                <td>
+                    @animal.Especie
+                </td>
+                <td>
+                    @animal.Edad
+                </td>
+                <td>
+                   @animal.LugarOrigen
+                </td>
+                <td>
+                    @animal.Peso
+                </td>
+                <td>
+                    @_calculosServicios.CalcularAlimentoMensual(animal)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+@code { }
